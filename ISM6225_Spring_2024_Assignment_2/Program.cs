@@ -60,113 +60,155 @@ namespace Assignment_2
         // Question 1: Find Missing Numbers in Array
         public static IList<int> FindMissingNumbers(int[] nums)
         {
-            try
+            // List to store missing numbers
+            List<int> missingNumbers = new List<int>();
+
+            // Mark each index corresponding to the value at that index as negative 
+            // This helps in tracking the numbers that are present in the array
+            for (int i = 0; i < nums.Length; i++)
             {
-                // Write your code here
-                return new List<int>(); // Placeholder
+                int val = Math.Abs(nums[i]) - 1; // Use absolute value to handle previously marked numbers
+                if (nums[val] > 0) // If value at that index is positive, mark it negative
+                    nums[val] = -nums[val];
             }
-            catch (Exception)
+
+            // If the value at an index is still positive, 
+            // it means the corresponding number was missing from the array
+            for (int i = 0; i < nums.Length; i++)
             {
-                throw;
+                if (nums[i] > 0)
+                    missingNumbers.Add(i + 1); // The number is index + 1
             }
+            return missingNumbers; // Return the list of missing numbers
         }
 
         // Question 2: Sort Array by Parity
         public static int[] SortArrayByParity(int[] nums)
         {
-            try
+            // Create a result array to store the sorted numbers
+            int[] result = new int[nums.Length];
+
+            // Two pointers: 
+            // evenIndex starts from the beginning and stores even numbers
+            // oddIndex starts from the end and stores odd numbers
+            int evenIndex = 0, oddIndex = nums.Length - 1;
+
+            // Loop through the input array
+            foreach (int num in nums)
             {
-                // Write your code here
-                return new int[0]; // Placeholder
+                // If the number is even, place it at the next evenIndex
+                if (num % 2 == 0)
+                    result[evenIndex++] = num;
+                else
+                    // If the number is odd, place it at the next oddIndex
+                    result[oddIndex--] = num;
             }
-            catch (Exception)
-            {
-                throw;
-            }
+            return result; // Return the array sorted by parity
         }
 
         // Question 3: Two Sum
         public static int[] TwoSum(int[] nums, int target)
         {
-            try
+            // Dictionary to store the value and its index in the array
+            Dictionary<int, int> map = new Dictionary<int, int>();
+
+            // Loop through the array
+            for (int i = 0; i < nums.Length; i++)
             {
-                // Write your code here
-                return new int[0]; // Placeholder
+                // Calculate the complement that when added to nums[i] gives the target
+                int complement = target - nums[i];
+
+                // If the complement exists in the dictionary, return the indices
+                if (map.ContainsKey(complement))
+                {
+                    return new int[] { map[complement], i };
+                }
+                // Otherwise, store the current number and its index in the dictionary
+                map[nums[i]] = i;
             }
-            catch (Exception)
-            {
-                throw;
-            }
+            return new int[0]; // If no solution is found, return an empty array
         }
 
         // Question 4: Find Maximum Product of Three Numbers
         public static int MaximumProduct(int[] nums)
         {
-            try
-            {
-                // Write your code here
-                return 0; // Placeholder
-            }
-            catch (Exception)
-            {
-                throw;
-            }
+            // Sort the array to easily access the largest and smallest numbers
+            Array.Sort(nums);
+            int n = nums.Length;
+
+            // The maximum product can either be:
+            // 1. The product of the three largest numbers
+            // 2. The product of the two smallest (negative) numbers and the largest number
+            return Math.Max(nums[0] * nums[1] * nums[n - 1], nums[n - 1] * nums[n - 2] * nums[n - 3]);
         }
 
         // Question 5: Decimal to Binary Conversion
         public static string DecimalToBinary(int decimalNumber)
         {
-            try
+            // Edge case: if the decimal number is 0, return "0"
+            if (decimalNumber == 0) return "0";
+
+            // Initialize an empty string to store the binary result
+            string binary = "";
+
+            // Convert decimal to binary by repeatedly dividing by 2 
+            // and storing the remainder (which is the binary digit)
+            while (decimalNumber > 0)
             {
-                // Write your code here
-                return "101010"; // Placeholder
+                binary = (decimalNumber % 2) + binary; // Append remainder to binary result
+                decimalNumber /= 2; // Divide by 2 for the next digit
             }
-            catch (Exception)
-            {
-                throw;
-            }
+            return binary; // Return the binary string
         }
 
         // Question 6: Find Minimum in Rotated Sorted Array
         public static int FindMin(int[] nums)
         {
-            try
+            // Use binary search approach
+            int left = 0, right = nums.Length - 1;
+
+            // Loop until left and right pointers converge
+            while (left < right)
             {
-                // Write your code here
-                return 0; // Placeholder
+                int mid = left + (right - left) / 2; // Find the midpoint
+
+                // If mid element is greater than right element, the minimum must be on the right side
+                if (nums[mid] > nums[right])
+                    left = mid + 1;
+                else
+                    // Otherwise, the minimum is on the left side
+                    right = mid;
             }
-            catch (Exception)
-            {
-                throw;
-            }
+            return nums[left]; // The left pointer will point to the minimum element
         }
 
         // Question 7: Palindrome Number
         public static bool IsPalindrome(int x)
         {
-            try
+            // If the number is negative, it can't be a palindrome
+            if (x < 0) return false;
+
+            int reversed = 0, original = x;
+
+            // Reverse the number by repeatedly taking the last digit
+            while (x > 0)
             {
-                // Write your code here
-                return false; // Placeholder
+                reversed = reversed * 10 + x % 10; // Append last digit to reversed number
+                x /= 10; // Remove the last digit from the original number
             }
-            catch (Exception)
-            {
-                throw;
-            }
+
+            // If the reversed number equals the original, it's a palindrome
+            return original == reversed;
         }
 
         // Question 8: Fibonacci Number
         public static int Fibonacci(int n)
         {
-            try
-            {
-                // Write your code here
-                return 0; // Placeholder
-            }
-            catch (Exception)
-            {
-                throw;
-            }
+            // Base cases: F(0) = 0 and F(1) = 1
+            if (n <= 1) return n;
+
+            // Use recursion to calculate Fibonacci number for n > 1
+            return Fibonacci(n - 1) + Fibonacci(n - 2);
         }
     }
 }
