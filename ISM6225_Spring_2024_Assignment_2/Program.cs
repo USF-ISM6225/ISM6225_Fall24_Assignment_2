@@ -83,22 +83,29 @@ namespace Assignment_2
             }
         }
 
+        
         // Question 2: Sort Array by Parity
         public static int[] SortArrayByParity(int[] nums)
         {
             try
             {
-                int[] result = new int[nums.Length];
-                int evenIndex = 0, oddIndex = nums.Length - 1; // Two pointers
+                // Lists to store even and odd numbers
+                List<int> evens = new List<int>();
+                List<int> odds = new List<int>();
 
+                // Traverse the array and segregate even and odd numbers
                 foreach (int num in nums)
                 {
                     if (num % 2 == 0)
-                        result[evenIndex++] = num; // Place even numbers at the front
+                        evens.Add(num); // Add even numbers to the evens list
                     else
-                        result[oddIndex--] = num; // Place odd numbers at the back
+                        odds.Add(num);  // Add odd numbers to the odds list
                 }
-                return result; // Return the sorted array
+
+                // Combine even numbers followed by odd numbers
+                evens.AddRange(odds);
+
+                return evens.ToArray(); // Convert list to array and return
             }
             catch (Exception ex)
             {
@@ -106,6 +113,8 @@ namespace Assignment_2
                 throw;
             }
         }
+
+
 
         // Question 3: Two Sum
         public static int[] TwoSum(int[] nums, int target)
