@@ -83,7 +83,12 @@ namespace Assignment_2
             }
         }
 
-        
+        // Self-reflection (Question 1):
+        /*
+        In solving the Find Missing Numbers problem, I learned how to effectively use an array's indices to mark presence in O(n) time.
+        This was an insightful exercise in modifying the array in-place and thinking about how absolute values could help in preserving necessary data.
+        */
+
         // Question 2: Sort Array by Parity
         public static int[] SortArrayByParity(int[] nums)
         {
@@ -114,7 +119,11 @@ namespace Assignment_2
             }
         }
 
-
+        // Self-reflection (Question 2):
+        /*
+        Sorting the array by parity helped me understand the importance of separating even and odd values efficiently.
+        I initially struggled with maintaining the correct order for odd values, but using two separate lists simplified the process and clarified the benefits of list-based manipulations.
+        */
 
         // Question 3: Two Sum
         public static int[] TwoSum(int[] nums, int target)
@@ -140,6 +149,12 @@ namespace Assignment_2
             }
         }
 
+        // Self-reflection (Question 3):
+        /*
+        The Two Sum problem taught me the power of using a hash map to reduce the time complexity from O(n^2) to O(n).
+        This reinforced my understanding of hash-based lookups and their efficiency in comparison to brute force approaches.
+        */
+
         // Question 4: Find Maximum Product of Three Numbers
         public static int MaximumProduct(int[] nums)
         {
@@ -157,6 +172,12 @@ namespace Assignment_2
                 throw;
             }
         }
+
+        // Self-reflection (Question 4):
+        /*
+        Finding the maximum product of three numbers demonstrated the importance of handling edge cases, particularly with negative values.
+        I learned that sorting simplifies the problem, allowing for easy comparison of the two smallest and three largest values in constant time.
+        */
 
         // Question 5: Decimal to Binary Conversion
         public static string DecimalToBinary(int decimalNumber)
@@ -178,6 +199,12 @@ namespace Assignment_2
                 throw;
             }
         }
+
+        // Self-reflection (Question 5):
+        /*
+        Converting decimal to binary was a straightforward problem, but it reinforced my understanding of how numbers are represented in binary.
+        The iterative approach to building the binary string from the remainder was a great reminder of how basic mathematical operations underpin computing systems.
+        */
 
         // Question 6: Find Minimum in Rotated Sorted Array
         public static int FindMin(int[] nums)
@@ -202,6 +229,12 @@ namespace Assignment_2
             }
         }
 
+        // Self-reflection (Question 6):
+        /*
+        The minimum in a rotated sorted array problem introduced me to a clever use of binary search to find the minimum in O(log n) time.
+        This helped me understand how binary search can be adapted to non-traditional sorted arrays by focusing on the key properties of the rotation.
+        */
+
         // Question 7: Palindrome Number
         public static bool IsPalindrome(int x)
         {
@@ -223,6 +256,12 @@ namespace Assignment_2
             }
         }
 
+        // Self-reflection (Question 7):
+        /*
+        Checking if a number is a palindrome required me to reverse the integer and compare it with the original.
+        This was a great exercise in reversing numbers without using string manipulation and reinforced my understanding of numeric operations.
+        */
+
         // Question 8: Fibonacci Number
         public static int Fibonacci(int n)
         {
@@ -237,5 +276,12 @@ namespace Assignment_2
                 throw;
             }
         }
+
+        // Self-reflection (Question 8):
+        /*
+        Implementing the Fibonacci sequence recursively gave me a clear understanding of how recursion works, but also highlighted its limitations.
+        Specifically, I realized the performance bottlenecks caused by excessive recursive calls and learned the value of memoization or iterative approaches in optimizing solutions.
+        */
     }
 }
+
